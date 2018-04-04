@@ -1,11 +1,18 @@
 package hello;
 
 import java.util.*;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.LogManager;
+import java.util.logging.Logger;
+import java.io.*;
+
 
 public class Greeting {
-
+    // test 1
     private final long id;
     private final String result;
+    private static Logger logger = Logger.getLogger(Greeting.class.getName());
 
     static int getOrder(char input){
         switch(input){
@@ -112,9 +119,14 @@ public class Greeting {
         return eval(a);
     }
 
-    public Greeting(long id, String content) {
+    public Greeting(long id, String content) throws IOException {
+        FileHandler fileHandler = new FileHandler("./logging.log");
+        fileHandler.setLevel(Level.INFO); //Log的層級
+        logger.addHandler(fileHandler);
+        logger.info("received expression:"+content);
         this.id = id;
         this.result = content+"="+solver(content);
+        logger.info("reporting the result:"+this.result);
     }
 
     public long getId() {
