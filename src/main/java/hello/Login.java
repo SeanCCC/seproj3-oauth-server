@@ -24,7 +24,7 @@ public class Login {
         logger.info(""+id+" is trying to login");
         if(GreetingController.tokenTable.has(String.valueOf(getToken(id)))){
             this.rvl = 0;
-            this.result = ""+id+" has already logged in";
+            this.result = ""+id+" has already logged in with token "+getToken(id);
             logger.info(""+id+" has already logged in");
         }
         else if(GreetingController.idpwd.has(id)) {

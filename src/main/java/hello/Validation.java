@@ -23,7 +23,6 @@ public class Validation {
         logger.addHandler(fileHandler);
         logger.info(""+token+" requires Validation");
         if(GreetingController.tokenTable.has(token)){
-            GreetingController.tokenTable.remove(token);
             logger.info(""+token+" is valid");
             this.result = token+" is valid";
             this.rvl = 1;

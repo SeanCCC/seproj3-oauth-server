@@ -17,21 +17,21 @@ public class Logout {
         return id.hashCode();
     }
 
-    public Logout(String id) throws IOException {
+    public Logout(String token) throws IOException {
         FileHandler fileHandler = new FileHandler("./log/Logout.log");
         fileHandler.setLevel(Level.INFO); //Log的層級
         logger.addHandler(fileHandler);
-        logger.info(""+id+" is Logging out");
-        if(GreetingController.tokenTable.has(String.valueOf(getToken(id)))){
-            GreetingController.tokenTable.remove(String.valueOf(getToken(id)));
-            logger.info(""+id+" has Logged out");
-            this.result = id+" has logged out";
+        logger.info(""+token+" is Logging out");
+        if(GreetingController.tokenTable.has(token)){
+            GreetingController.tokenTable.remove(token);
+            logger.info(""+token+" has Logged out");
+            this.result = token+" has logged out";
             this.rvl = 1;
         }
         else{
-            this.result = id+" has never logged in";
+            this.result = token+" has never logged in";
             this.rvl = -1;
-            logger.info(id+" has never logged in");
+            logger.info(token+" has never logged in");
         }
     }
 

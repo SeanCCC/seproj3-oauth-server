@@ -26,8 +26,8 @@ public class GreetingController {
     }
 
     @RequestMapping("/logout")
-    public Logout logout(@RequestParam(value="id", defaultValue="") String id) throws IOException {
-        return new Logout(id);
+    public Logout logout(@RequestParam(value="token", defaultValue="") String token) throws IOException {
+        return new Logout(token);
     }
 
     @RequestMapping("/valid")
